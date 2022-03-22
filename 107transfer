@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+from src.parse_args import parse_args, Arguments
+from sys import argv
+from src.polynomes import get_polynomes
+from src.calculus import polynomial_mulitplication, calculs
+from src.drawing import drawing
+
+
+def main() -> int:
+    lists: tuple[list[dict[int, str]], list[dict[int, str]]]
+    num: dict[float, float] = {}
+    deno: dict[float, float] = {}
+    results: dict[float, float] = {}
+
+    args: Arguments = parse_args()
+    lists = get_polynomes(argv)
+    num, deno = polynomial_mulitplication(lists[0], lists[1])
+    results = calculs(num, deno)
+    drawing(results)
+    return 0
+
+if __name__ == "__main__":
+    exit(main())
